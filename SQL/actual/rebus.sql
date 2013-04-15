@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 15 Avril 2013 à 14:13
+-- Généré le: Lun 15 Avril 2013 à 23:56
 -- Version du serveur: 5.5.29
 -- Version de PHP: 5.4.6-1ubuntu1.2
 
@@ -37,6 +37,21 @@ CREATE TABLE IF NOT EXISTS `rebus` (
   KEY `author` (`author`,`receiver`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_facebook_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `user_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_last_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_status` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 --
 -- Contraintes pour les tables exportées
 --
@@ -45,8 +60,8 @@ CREATE TABLE IF NOT EXISTS `rebus` (
 -- Contraintes pour la table `rebus`
 --
 ALTER TABLE `rebus`
-  ADD CONSTRAINT `rebus_ibfk_2` FOREIGN KEY (`author`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `rebus_ibfk_1` FOREIGN KEY (`rebus_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `rebus_ibfk_1` FOREIGN KEY (`rebus_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `rebus_ibfk_2` FOREIGN KEY (`author`) REFERENCES `user` (`user_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
