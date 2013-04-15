@@ -10,16 +10,17 @@ class UserModel extends Prefab{
 
      /**
 		GET single user by id
-		@param $id 			-> facebook id, or id
+		@param $userId 			-> facebook id, or id
 		@param $isFB 		-> TRUE = $id is a FB id, DEFAULT = false
 		@return object
     **/
-	function getUserById($id, $isFB = false){
+	function getUser($userId, $isFB = false){
 
-		if($isFB == false){
-			return $user->find(array("user_id=?", $id));
+		if($isFB){
+			return $user->find(array("user_facebook_id=?", $userId));
 		}else{
-			return $user->find(array("user_facebook_id=?", $id));
+			
+			return $user->find(array("user_id=?", $userId));
 		}
 		
 
@@ -27,23 +28,73 @@ class UserModel extends Prefab{
 
      /**
 		SET single user
-		@post 				-> Post form
-		@isFantom			-> TRUE = SET a waiting user, DEFAULT = false
-		@return object
+		@param $isFantom			-> TRUE = SET a waiting user, DEFAULT = false (useless if form = db)
     **/    
-    function getUserByFacebookId($post, $isFantom = false){
+    function setUser($isFantom = false){
 		
+		//$user->copyFrom('POST'); if post = db
+		//$user->insert();
+
+    	$user->user_facebook_id = F3::get('POST.user_facebook_id');
+
+    	if($isFantom == false){
+    		$user->user_status = 1;
+    		$user->user_name = F3::get('POST.user_name');
+    		$user->user_last_name = F3::get('POST.user_last_name');
+    	}
+
+    	$user->save();
 		
     }
 
     /**
 		UPDATE single user
-		@post 				-> Post form		
+		@param $userId 				-> userId	
+		@param $isFB 				-> TRUE = userId is FB	DEFAULT = false
+		@return Bool 				-> TRUE = updated, FALSE = no user to update
     **/    
-    function updateUser($post){
+    function updateUser($userId, $isFB = false){
+		
+		if($isFB){
+			$user->find(array('user_facebook_id=?',$userId));
+		}else{
+			$user->find(array('user_id=?',$userId));
+		}
 		
 
+		if($user->dry()){
+
+			//no user to update
+			return false;
+
+		}else{
+
+			$user->copyFrom('POST');
+			$user->update();
+
+			return true;
+		}
+
+    	
+
     }
+
+    /**
+		DELETE single user
+		@param $userId 				-> userId
+		@param $isFB 				-> TRUE = userId is FB	DEFAULT = false
+    **/  
+	function deleteUser($userId, $isFB = false){
+
+		if($isFB){
+			$user->find(array('user_id=?',$userId));
+		}else{
+			$user->find(array('user_facebook_id=?',$userId));
+		}
+
+		$user->erase();
+
+	}
 
 	
 
