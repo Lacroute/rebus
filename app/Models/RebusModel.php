@@ -1,8 +1,8 @@
 <?php
 class RebusModel extends Prefab{
 
-	//Mapper of rebus.user table
-	private $user;
+	//Mapper of rebus.rebus table
+	private $rebus;
 
 	function __construct() {
 			$rebus = new DB\SQL\Mapper(F3::get('db'),'rebus');
