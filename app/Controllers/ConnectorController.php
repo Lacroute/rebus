@@ -1,6 +1,10 @@
 <?php
 class ConnectorController{
 
+	function beforeRoute(){
+		echo F3::get('VERB');
+	}
+
 	function home(){
     	echo Views::instance()->render('home.php');
 	}
@@ -10,6 +14,7 @@ class ConnectorController{
 	}
 
 	function search(){
+		echo 'coucou';exit();
 		switch (F3::get('VERB')) {
 			case 'GET':
 				break;
@@ -23,5 +28,8 @@ class ConnectorController{
 				break;
 		}
 	}
+
+	function coucou(){
+		echo 'coucou';
+	}
 }
-?>

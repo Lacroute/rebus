@@ -60,7 +60,7 @@ class RebusModel extends Prefab{
 		@param $typeOfSearch	-> 0 = all, 1 = only found, 2 only unfound, DEFAULT = 0
 		@return object | Bool
     **/
-	function getRebusByAuthor($userId, $typeOfSearch = 0){
+	function getRebusByReceiver($userId, $typeOfSearch = 0){
 
 		switch($typeOfSearch){
 
