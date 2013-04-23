@@ -1,0 +1,16 @@
+.resultSelection{
+	width: 250px;
+	float: left;
+	text-align: center;
+}
+.resultSelection div{
+	height: 80%;
+	overflow-y: scroll;
+}
+#queryResult:after{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}

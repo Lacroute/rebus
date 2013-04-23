@@ -13,6 +13,7 @@ class ConnectorController{
 		echo Views::instance()->render('userref.html');
 	}
 
+<<<<<<< HEAD
 	function search(){
 		echo 'coucou';exit();
 		switch (F3::get('VERB')) {
@@ -32,4 +33,6 @@ class ConnectorController{
 	function coucou(){
 		echo 'coucou';
 	}
+=======
+>>>>>>> dd1fd99d4e12b4e1a8df1d05922d339e051bffdd
 }

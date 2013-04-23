@@ -1,15 +1,24 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="public/css/style.css">
+</head>
+<body>
+	<div id="queryResult">
 <?php
-$res_dribbble = json_decode(F3::get('res_dribbble'));
-$res_pinterest = json_decode(F3::get('res_pinterest'));
-echo "<h1>Dribble</h1>";
-foreach ($res_dribbble->results as $object) {
-	echo('<img src="'.$object->thumbnail.'"><br />');
-}
-echo "<h1>Pinterest</h1>";
-foreach ($res_pinterest->results as $object) {
-	echo('<img src="'.$object->thumbnail.'"><br />');
-}
-echo "<h1>Flux brut récupéré</h1>";
-var_dump($res_dribbble);
-var_dump($res_pinterest);
+$globalResults = F3::get('results');
+foreach ($globalResults as $keyword => $wordResult) {
+	echo ('<section class="resultSelection"><h1>'.$keyword.'</h1><div>');
+	foreach ($wordResult as $jsonResult) {
+		$jsonResult = json_decode($jsonResult);
+		foreach ($jsonResult->results as $object) {
+			echo('<img src="'.$object->thumbnail.'"><br />');
+		};
+	};
+	echo ('</div></section>');
+};
+echo "</div><p><h1>Flux brut récupéré</h1></p>";
+var_dump($globalResults);
 ?>
+
+</body>
+</html>
