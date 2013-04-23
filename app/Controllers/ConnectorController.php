@@ -1,11 +1,48 @@
 <?php
 class ConnectorController{
 
+
 	function beforeRoute(){
 		echo F3::get('VERB');
+		
 	}
 
 	function home(){
+		$facebook = new Facebook(array(
+			'appId'  => '228097693986241',
+			'secret' => '1fd2798433f737a8c48994b963917562'
+		));	
+
+		//get user data
+		$user = $facebook->getUser();
+
+		if ($user) {
+			try {
+				// Proceed knowing you have a logged in user who's authenticated.
+				$user_profile = $facebook->api('/me');
+				F3::set('user', $user_profile);
+			} catch (FacebookApiException $e) {
+				$user = null;
+				F3::set('user', null);
+			}
+		}
+
+		//Link for connection/deconnection
+		if ($user) {
+
+			F3::mset(array(
+				'FBconnexionText' => 'Déconnexion',
+				'FBconnexionLink' =>  $facebook->getLogoutUrl()
+				));
+
+		} else {
+
+			F3::mset(array(
+				'FBconnexionText' => 'Connexion avec Facebook',
+				'FBconnexionLink' => $facebook->getLoginUrl()
+				));
+		}
+
     	echo Views::instance()->render('home.php');
 	}
 
@@ -13,7 +50,7 @@ class ConnectorController{
 		echo Views::instance()->render('userref.html');
 	}
 
-<<<<<<< HEAD
+
 	function search(){
 		echo 'coucou';exit();
 		switch (F3::get('VERB')) {
@@ -33,6 +70,5 @@ class ConnectorController{
 	function coucou(){
 		echo 'coucou';
 	}
-=======
->>>>>>> dd1fd99d4e12b4e1a8df1d05922d339e051bffdd
+
 }

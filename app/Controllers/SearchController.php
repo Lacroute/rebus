@@ -11,7 +11,7 @@ class SearchController{
 				$query = explode(" ", $query);
 				$dribble = new kepezz\Dribbble();
 				$pinterest = new kepezz\Pinterest();
-				$result = [];
+				$result = array();
 				foreach ($query as $index => $keyword) {
 					$result[$keyword]['dribbble'] = $dribble->search($keyword);
 					$result[$keyword]['pinterest'] = $pinterest->search($keyword);
