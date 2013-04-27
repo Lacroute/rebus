@@ -3,7 +3,6 @@ class ConnectorController{
 
 
 	function beforeRoute(){
-		echo F3::get('VERB');
 		
 	}
 
@@ -43,11 +42,12 @@ class ConnectorController{
 				));
 		}
 
-    	echo Views::instance()->render('home.php');
+    	F3::set('page', 'home');
 	}
 
 	function doc(){
 		echo Views::instance()->render('userref.html');
+		die();
 	}
 
 
@@ -62,13 +62,16 @@ class ConnectorController{
 				$pinterest = new kepezz\Pinterest();
 				F3::set('res_dribbble', $dribble->search($keyword));
 				F3::set('res_pinterest', $pinterest->search($keyword));
-				echo Views::instance()->render('result_debug.php');
+
+				F3::set('page', 'result_debug');
+				
 				break;
 		}
 	}
 
-	function coucou(){
-		echo 'coucou';
+
+	function afterRoute(){
+		echo Views::instance()->render('template.php');
 	}
 
 }
