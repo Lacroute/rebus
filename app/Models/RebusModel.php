@@ -1,11 +1,26 @@
 <?php
 class RebusModel extends Prefab{
 
-	//Mapper of rebus.rebus table
-	private $rebus;
-
 	function __construct() {
-			$rebus = new DB\SQL\Mapper(F3::get('db'),'rebus');
+		$this->rebus = new DB\SQL\Mapper(F3::get('db'),'rebus');
+	}
+
+	/**
+		ADD new rebus
+		@param $data : array
+		@return $rebusId : Id in the database
+	**/
+	function addRebus($data){
+
+		$this->rebus->sentence = $data['sentence'];
+		$this->rebus->author = F3::get('SESSION.user_id');
+		$this->rebus->receiver = $data['receiver'];
+		$this->rebus->save();
+
+		// On récupére l'ID du rebus inséré précedemment
+		$rebusId=$this->rebus->_id; 
+
+		return $rebusId;
 	}
 
 	/**
@@ -31,7 +46,6 @@ class RebusModel extends Prefab{
 
 		$rebus->copyFrom('POST');
 		$rebus->save();
-
 	}
 
 	/**
@@ -41,17 +55,14 @@ class RebusModel extends Prefab{
     **/
 	function getRebusByAuthor($userId){
 
-
 		$rebus->load(array('author=?', $userId));
 
 		if($rebus->dry()){
 			//no rebus match
-			return false
+			return false;
 		}else{
 			return $rebus;
 		}
-		
-
 	}
 
 	/**
@@ -79,9 +90,6 @@ class RebusModel extends Prefab{
 			default:
 				return false;
 			break;
-
-
-
 		}
 
 		$rebus->load($myArray);
@@ -91,8 +99,6 @@ class RebusModel extends Prefab{
 		}else{
 			return $rebus;
 		}
-		
-
 	}
 
 	function __destruct(){

@@ -44,7 +44,7 @@ class UserController{
 			break;
 		}//END SWITCH
 	
-
+		echo Views::instance()->render('signin.php');
 	}
 
 	function login(){
@@ -79,6 +79,8 @@ class UserController{
 
 			break;
 		}//END SWITCH
+
+		echo Views::instance()->render('login.php');
 	}
 
 	function logout(){
@@ -102,7 +104,7 @@ class UserController{
 
 	function afterRoute(){
 		F3::set('SESSION', F3::get('SESSION'));
-		echo Views::instance()->render('template.php');
+		// echo Views::instance()->render('template.php');
 	}
 
 }
