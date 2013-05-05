@@ -1,4 +1,4 @@
-<form action="user/signin" method='post'>
+<form action="signin" method='post'>
 <?php echo $error ?>
 	<label>Nom : </label> <input type="text" name="user_last_name" pattern="[\-A-zéèêàáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ0-9]{1,50}" required/><br/>
 	<label>Prénom : </label> <input type="text" name="user_name" pattern="[\-A-zéèêàáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ0-9]{1,50}" required/><br/>
