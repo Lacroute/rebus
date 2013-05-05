@@ -124,6 +124,19 @@ class UserModel extends Prefab{
 	}
 
 
+    /**
+		GET friendlist
+		@return object
+    **/     
+	public function getFriends(){
+
+		$search = new DB\SQL\Mapper(F3::get('db'),'view_user_to_user');
+		$result = $search->find(array(('user_id=?'), $this->user->user_id));
+		return $result;
+		
+	}
+
+
 
 	function __destruct(){
 

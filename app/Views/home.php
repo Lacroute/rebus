@@ -3,8 +3,7 @@
 	<meta charset="utf-8">
 </head>
 <body>
-	<header><img src="" alt="LOGO"> <a href="#">Connexion</a></header>
-	<a href="<?php echo $FBconnexionLink ?>"><?php echo $FBconnexionText ?></a>
+
 	<h1>Acceuil</h1>
 	<fieldset><div>ici : mashup à décoder &rarr; <a href="tutorial">Tutorial</a></div></fieldset>
 	<fieldset><div>ici : vidéo how it works</div></fieldset>

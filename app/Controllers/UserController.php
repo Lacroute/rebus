@@ -13,9 +13,7 @@ class UserController{
 		switch($this->verb){
 
 			case 'GET':
-				if(F3::exists('SESSION.user_id')){
-					F3::reroute('/');
-				}
+				$this->isConnected();
 				F3::mset(array(	'page'		=> 'signin',
 								'pageTitle'	=> 'Signin'));
 			break;
@@ -50,7 +48,7 @@ class UserController{
 	function login(){
 		
 		//if already connected
-		if(F3::exists('SESSION.user_id')){F3::reroute('/');}
+		$this->isConnected();
 
 		switch($this->verb){
 
@@ -90,13 +88,56 @@ class UserController{
 		F3::reroute('/');
 	}
 
+	//show his own profile
 	function profile(){
+		$this->isConnected();
 		$user = new UserModel(F3::get('SESSION.user_id'));
-		$user = $user->getRebus('author');
+		//reroute for profile with slug
+		F3::reroute('/user/profile/'.$user->user->user_id.'/'.$user->user->user_name.'_'.$user->user->user_last_name);exit();
+	}
 
+	//show the profilbyId
+	function showProfileById(){
+		$user = new UserModel(F3::get('PARAMS.id'));
+		//stop if user not found
+		if($user->user == null){echo 'pas d\'user sous cet id';exit();}
+		//reroute with slug
+		F3::reroute('/user/profile/'.$user->user->user_id.'/'.$user->user->user_name.'_'.$user->user->user_last_name);exit();
+	}
+
+	function showProfileByIdandSlug(){
+		$user = new UserModel(F3::get('PARAMS.id'));
+		//stop if user not found
+		if($user->user == null){echo 'pas d\'user sous cet id';exit();}
+		//reroute if slug is not good
+		if(F3::get('PARAMS.slug') != $user->user->user_name.'_'.$user->user->user_last_name){
+			F3::reroute('/user/profile/'.$user->user->user_id.'/'.$user->user->user_name.'_'.$user->user->user_last_name);exit();
+		}
+
+
+		$rebusAuthor = $user->getRebus('author');
+		$friends = $user->getFriends();
 		F3::mset(array(	'page'			=> 'profile',
-		 				'rebusAuthor'	=> $user,
+		 				'rebusAuthor'	=> $rebusAuthor,
+		 				'friends'	=> $friends,
 						'pageTitle'		=> F3::get('SESSION.user_name').' '.F3::get('SESSION.user_last_name')));
+
+		
+	}
+
+	function editProfile(){
+		$this->isConnected();
+		$user = new UserModel(F3::get('SESSION.user_id'));
+		$userData = $user->user;
+		F3::mset(array(	'user'			=> $userData,
+		 				'page'			=> 'editProfile',
+						'pageTitle'		=> 'edit Profile'));
+
+	}
+
+	private function isConnected(){
+		//if already connected
+		if(!F3::exists('SESSION.user_id')){F3::reroute('/');exit();}
 	}
 
 
