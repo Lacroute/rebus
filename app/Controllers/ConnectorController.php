@@ -7,40 +7,6 @@ class ConnectorController{
 	}
 
 	function home(){
-		$facebook = new Facebook(array(
-			'appId'  => F3::get('APP_ID'),
-			'secret' => F3::get('SECRET')
-		));	
-
-		//get user data
-		$user = $facebook->getUser();
-
-		if ($user) {
-			try {
-				// Proceed knowing you have a logged in user who's authenticated.
-				$user_profile = $facebook->api('/me');
-				F3::set('user', $user_profile);
-			} catch (FacebookApiException $e) {
-				$user = null;
-				F3::set('user', null);
-			}
-		}
-
-		//Link for connection/deconnection
-		if ($user) {
-
-			F3::mset(array(
-				'FBconnexionText' => 'Déconnexion',
-				'FBconnexionLink' =>  $facebook->getLogoutUrl()
-				));
-
-		} else {
-
-			F3::mset(array(
-				'FBconnexionText' => 'Connexion avec Facebook',
-				'FBconnexionLink' => $facebook->getLoginUrl()
-				));
-		}
 
     	F3::set('page', 'home');
 	}

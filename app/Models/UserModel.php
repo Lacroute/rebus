@@ -25,16 +25,13 @@ class UserModel extends Prefab{
      /**
 		GET single user 
 		@param $id 			->  id
-		@param $isFB 		-> TRUE = $id is a FB id, DEFAULT = false
 		@return object
     **/
-    public function initUser($id, $isFB = false){
+    public function initUser($id){
 
-    	if($isFB){
-    		$search = $this->mapper->load(array('user_facebook_id=?', $id));
-    	}else{
-    		$search = $this->mapper->load(array('user_id=?', $id));
-    	}
+    	
+    	$search = $this->mapper->load(array('user_id=?', $id));
+    	
     	$this->user = ($this->mapper->dry()) ? null : $search;
     	return $this;
     }
@@ -70,11 +67,11 @@ class UserModel extends Prefab{
 		}
 
 		//vérification si le compte facebook est déjà lié
-		if(F3::get('POST.user_facebook_id') != "noFB")
+		/*if(F3::get('POST.user_facebook_id') != "noFB")
 		$ifExists = $this->mapper->load(array('user_facebook_id=?', F3::get('POST.user_facebook_id') ));
 		if(!$this->mapper->dry()){
 			return false;
-		}
+		}*/
 
 		$this->mapper->copyFrom('POST');
 		$this->mapper->insert();
@@ -131,12 +128,74 @@ class UserModel extends Prefab{
 	public function getFriends(){
 
 		$search = new DB\SQL\Mapper(F3::get('db'),'view_user_to_user');
-		$result = $search->find(array(('user_id=?'), $this->user->user_id));
+		$result = $search->find(array(('friend_id=?'), $this->user->user_id));
 		return $result;
 		
 	}
 
+    /**
+		GET friendlist
+		@return object
+    **/     
+	public function getList(){
 
+		$search = new DB\SQL\Mapper(F3::get('db'),'user');
+		$result = $search->find();
+		return $result;
+		
+	}
+
+    /**
+		is in friendlist ?
+		@return bool
+    **/     
+	public function isfriend($id){
+		if($id == $this->user->user_id){
+			return 3;
+		}
+		$search = new DB\SQL\Mapper(F3::get('db'),'view_user_to_user');
+		$result = $search->load(array(('user_id=? and friend_id=?'), $id, $this->user->user_id));
+		if($search->dry()){
+			return 2;
+		}else{
+			return 1;
+		}
+
+	}
+
+    /**
+		is in friendlist ?
+		@return bool
+    **/     
+	public function waitingInvit(){
+		$search = new DB\SQL\Mapper(F3::get('db'),'view_waiting_invit');
+		$result = $search->find(array('user_id=?', $this->user->user_id));
+		return $result;
+	}
+
+	public function InvitAction($id, $bool){
+		if($bool == false){
+			//refuse
+			$search = new DB\SQL\Mapper(F3::get('db'),'user_to_user');
+			$search->load(array('user_id_1=? AND user_id_2=?',$id,  $this->user->user_id));
+			$search->erase();
+		}else{
+			//accept
+			$search = new DB\SQL\Mapper(F3::get('db'),'user_to_user');
+			$search->load(array('user_id_1=? AND user_id_2=?',$id,  $this->user->user_id));
+			$search->status = 1;
+			$search->update();
+
+		}
+	}
+
+	public function addToFriends($id){
+		$search = new DB\SQL\Mapper(F3::get('db'),'user_to_user');
+		$search->user_id_1 = $this->user->user_id;
+		$search->user_id_2 = $id;
+		$search->status = 0;
+		$search->save();
+	}
 
 	function __destruct(){
 
