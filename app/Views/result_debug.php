@@ -1,8 +1,4 @@
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="public/css/style.css">
-</head>
-<body>
+
 	<div id="queryResult">
 <?php
 $globalResults = F3::get('results');
@@ -20,5 +16,3 @@ echo "</div><p><h1>Flux brut récupéré</h1></p>";
 var_dump($globalResults);
 ?>
 
-</body>
-</html>
