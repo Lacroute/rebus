@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title><?php echo $pageTitle ?> - Kép</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<base href="<?php echo $REBUS_FOLDER; ?>" />
+		<base href="<?php echo $BASE_URL; ?>" />
 		<title>Intranet</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
