@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 15, 2013 at 04:35 PM
+-- Generation Time: May 22, 2013 at 02:49 PM
 -- Server version: 5.5.24-log
--- PHP Version: 5.3.13
+-- PHP Version: 5.4.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,15 +34,17 @@ CREATE TABLE IF NOT EXISTS `rebus` (
   `author` int(11) NOT NULL,
   `receiver` int(11) NOT NULL,
   PRIMARY KEY (`rebus_id`),
-  KEY `author` (`author`,`receiver`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  KEY `author` (`author`,`receiver`),
+  KEY `receiver` (`receiver`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `rebus`
 --
 
 INSERT INTO `rebus` (`rebus_id`, `sentence`, `rebus_date`, `is_found`, `author`, `receiver`) VALUES
-(2, '', '2013-05-15 16:28:29', 0, 14, 12);
+(2, '', '2013-05-15 16:28:29', 0, 14, 12),
+(3, '', '2013-05-22 14:47:53', 0, 2, 32);
 
 -- --------------------------------------------------------
 
@@ -58,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_status` int(11) NOT NULL DEFAULT '0',
   `user_passwd` varchar(40) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=60 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
 
 --
 -- Dumping data for table `user`
@@ -115,7 +117,8 @@ INSERT INTO `user` (`user_id`, `user_mail`, `user_name`, `user_last_name`, `user
 (56, 'user_46@gmail.com', 'name_46', 'Last_name_46', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
 (57, 'user_47@gmail.com', 'name_47', 'Last_name_47', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
 (58, 'user_48@gmail.com', 'name_48', 'Last_name_48', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(59, 'user_49@gmail.com', 'name_49', 'Last_name_49', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8');
+(59, 'user_49@gmail.com', 'name_49', 'Last_name_49', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
+(60, 'test@test.com', 'prénom', 'nom', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8');
 
 -- --------------------------------------------------------
 
@@ -140,8 +143,11 @@ INSERT INTO `user_to_user` (`user_id_1`, `user_id_2`, `status`) VALUES
 (2, 10, 1),
 (2, 11, 1),
 (2, 14, 1),
+(2, 22, 0),
 (2, 24, 1),
-(17, 2, 1);
+(2, 37, 0),
+(17, 2, 1),
+(60, 43, 1);
 
 -- --------------------------------------------------------
 
@@ -210,8 +216,8 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Constraints for table `rebus`
 --
 ALTER TABLE `rebus`
-  ADD CONSTRAINT `rebus_ibfk_1` FOREIGN KEY (`rebus_id`) REFERENCES `user` (`user_id`),
-  ADD CONSTRAINT `rebus_ibfk_2` FOREIGN KEY (`author`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `rebus_ibfk_2` FOREIGN KEY (`author`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `rebus_ibfk_3` FOREIGN KEY (`receiver`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `user_to_user`
