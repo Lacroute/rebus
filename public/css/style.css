@@ -2,13 +2,13 @@ header ul li{
 	display: inline;
 	padding: 10px;
 }
-#queryResult:after{
+/*#queryResult:after{
 	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
-}
+}*/
 .resultSelection{
 	width: 250px;
 	float: left;
