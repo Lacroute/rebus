@@ -2,20 +2,39 @@ header ul li{
 	display: inline;
 	padding: 10px;
 }
-
-.resultSelection{
-	width: 250px;
-	float: left;
-	text-align: center;
-}
-.resultSelection div{
-	height: 80%;
-	overflow-y: scroll;
-}
 #queryResult:after{
 	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
+}
+.resultSelection{
+	width: 300px;
+	float: left;
+	text-align: center;
+}
+.container{
+	position: absolute;
+	height: 470px;
+	overflow: hidden;
+}
+.resultByWord{
+	position: relative;
+	top:0;
+	z-index: -1;
+	background-color: red;
+}
+.item{
+	height: 150px;
+	display: block;
+}
+.item  + .item{
+	margin-top: 10px;
+}
+.actionRoulette{
+	position: absolute;
+}
+.descend{
+	bottom: 0;
 }

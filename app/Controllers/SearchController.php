@@ -12,12 +12,15 @@ class SearchController{
 				$sentence = explode(" ", $sentence);
 				$dribble = new kepezz\Dribbble();
 				$pinterest = new kepezz\Pinterest();
+				$vimeo = new kepezz\Vimeo();
+
 				$result = array();
 				foreach ($sentence as $index => $keyword) {
-					$result[$keyword]['dribbble'] = $dribble->search($keyword);
-					$result[$keyword]['pinterest'] = $pinterest->search($keyword);
+					$result[$keyword]['img']['dribbble'] = $dribble->search($keyword);
+					$result[$keyword]['img']['pinterest'] = $pinterest->search($keyword);
+					// $result[$keyword]['vid']['vimeo'] = $vimeo->search($keyword);
 				}
-					
+
 				F3::mset(array(	'page'			=> 'result_debug',
 								'results' 		=> $result));
 				break;
