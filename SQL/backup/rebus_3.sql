@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2013 at 04:27 PM
+-- Generation Time: May 22, 2013 at 02:49 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `rebus` (
   PRIMARY KEY (`rebus_id`),
   KEY `author` (`author`,`receiver`),
   KEY `receiver` (`receiver`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `rebus`
@@ -44,9 +44,7 @@ CREATE TABLE IF NOT EXISTS `rebus` (
 
 INSERT INTO `rebus` (`rebus_id`, `sentence`, `rebus_date`, `is_found`, `author`, `receiver`) VALUES
 (2, '', '2013-05-15 16:28:29', 0, 14, 12),
-(3, '', '2013-05-22 14:47:53', 0, 2, 32),
-(4, 'bonjour monsieur', '2013-05-22 14:51:11', 0, 2, 32),
-(5, 'je suis une phrase à taper', '2013-05-22 17:40:12', 0, 2, 35);
+(3, '', '2013-05-22 14:47:53', 0, 2, 32);
 
 -- --------------------------------------------------------
 
@@ -154,45 +152,19 @@ INSERT INTO `user_to_user` (`user_id_1`, `user_id_2`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `view_author_to_rebus`
+-- Table structure for table `view_author_to_rebus`
 --
-CREATE TABLE IF NOT EXISTS `view_author_to_rebus` (
-`user_id` int(11)
-,`rebus_id` int(11)
-,`sentence` text
-,`rebus_date` timestamp
-,`is_found` tinyint(1)
-,`author` int(11)
-,`receiver` int(11)
-);
+-- in use(#1356 - View 'rebus.view_author_to_rebus' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them)
+-- Error reading data: (#1356 - View 'rebus.view_author_to_rebus' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them)
+
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `view_own_rebus`
+-- Table structure for table `view_receiver_to_rebus`
 --
-CREATE TABLE IF NOT EXISTS `view_own_rebus` (
-`user_id` int(11)
-,`rebus_id` int(11)
-,`sentence` text
-,`rebus_date` timestamp
-,`is_found` tinyint(1)
-,`author` int(11)
-,`receiver` int(11)
-);
--- --------------------------------------------------------
+-- in use(#1356 - View 'rebus.view_receiver_to_rebus' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them)
+-- Error reading data: (#1356 - View 'rebus.view_receiver_to_rebus' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them)
 
---
--- Stand-in structure for view `view_receiver_to_rebus`
---
-CREATE TABLE IF NOT EXISTS `view_receiver_to_rebus` (
-`user_id` int(11)
-,`rebus_id` int(11)
-,`sentence` text
-,`rebus_date` timestamp
-,`is_found` tinyint(1)
-,`author` int(11)
-,`receiver` int(11)
-);
 -- --------------------------------------------------------
 
 --
@@ -218,33 +190,6 @@ CREATE TABLE IF NOT EXISTS `view_waiting_invit` (
 ,`user_name` varchar(20)
 ,`user_last_name` varchar(20)
 );
--- --------------------------------------------------------
-
---
--- Structure for view `view_author_to_rebus`
---
-DROP TABLE IF EXISTS `view_author_to_rebus`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_author_to_rebus` AS select `user`.`user_id` AS `user_id`,`rebus_id` AS `rebus_id`,`sentence` AS `sentence`,`rebus_date` AS `rebus_date`,`is_found` AS `is_found`,`author` AS `author`,`receiver` AS `receiver` from (`rebus` left join `user` on((`user`.`user_id` = `author`)));
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_own_rebus`
---
-DROP TABLE IF EXISTS `view_own_rebus`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_own_rebus` AS select `user`.`user_id` AS `user_id`,`rebus_id` AS `rebus_id`,`sentence` AS `sentence`,`rebus_date` AS `rebus_date`,`is_found` AS `is_found`,`author` AS `author`,`receiver` AS `receiver` from (`rebus` left join `user` on((`user`.`user_id` = `receiver`))) where ((`receiver` = `author`) and (`is_found` = 0));
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_receiver_to_rebus`
---
-DROP TABLE IF EXISTS `view_receiver_to_rebus`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_receiver_to_rebus` AS select `user`.`user_id` AS `user_id`,`rebus_id` AS `rebus_id`,`sentence` AS `sentence`,`rebus_date` AS `rebus_date`,`is_found` AS `is_found`,`author` AS `author`,`receiver` AS `receiver` from (`rebus` left join `user` on((`user`.`user_id` = `receiver`)));
-
 -- --------------------------------------------------------
 
 --
