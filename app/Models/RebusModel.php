@@ -101,6 +101,22 @@ class RebusModel extends Prefab{
 		}
 	}
 
+	function getRebusByIdAndReceiver($idRebus, $idReceiver){
+
+		$this->rebus->load(array('receiver=? AND rebus_id=? AND is_found=0', $idReceiver, $idRebus));
+		if($this->rebus->dry()){
+			return false;
+		}else{
+			return $this->rebus;
+		}
+
+	}
+
+	function getEmptyWords(){
+		$empty = new DB\SQL\Mapper(F3::get('db'),'empty_words');
+		return $empty->find();
+	}
+
 	function __destruct(){
 
 	}

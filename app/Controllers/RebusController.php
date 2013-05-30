@@ -45,6 +45,22 @@ class RebusController{
 		}
 	}
 
+	function find(){
+		$idRebus = F3::get('PARAMS.id');
+		$rebus = new RebusModel();
+		$myRebus = $rebus->getRebusByIdAndReceiver($idRebus, F3::get('SESSION.user_id'));
+		$value = $rebus->getEmptyWords();
+		F3::set('empty', $value );
+		if(!$myRebus){
+			F3::reroute('/');
+		}else{
+			F3::set('idRebus', $idRebus);
+			F3::set('sentence', explode(" ",$myRebus->sentence));
+			F3::set('page', 'find');
+		}
+	}
+
+
 	function afterRoute(){
 		echo Views::instance()->render('template.php');
 	}
