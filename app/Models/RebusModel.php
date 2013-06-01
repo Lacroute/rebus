@@ -103,7 +103,7 @@ class RebusModel extends Prefab{
 
 	function getRebusByIdAndReceiver($idRebus, $idReceiver){
 
-		$this->rebus->load(array('receiver=? AND rebus_id=? AND is_found=0', $idReceiver, $idRebus));
+		$this->rebus->load(array('receiver=? AND rebus_id=?', $idReceiver, $idRebus));
 		if($this->rebus->dry()){
 			return false;
 		}else{
@@ -112,11 +112,35 @@ class RebusModel extends Prefab{
 
 	}
 
+	function getRebusByIdAndAuthor($idRebus, $idAuthor){
+
+		$this->rebus->load(array('author=? AND rebus_id=?', $idAuthor, $idRebus));
+		if($this->rebus->dry()){
+			return false;
+		}else{
+			return $this->rebus;
+		}
+
+	}
+
+	/**
+		GET empty words
+		@return object
+    **/
 	function getEmptyWords(){
 		$empty = new DB\SQL\Mapper(F3::get('db'),'empty_words');
 		return $empty->find();
 	}
 
+
+	/**
+		SET validate Rebus
+    **/
+	function validateRebus(){
+		$this->rebus->load(array('rebus_id=?', F3::get('POST.idRebus')));
+		$this->rebus->is_found = 1;
+		$this->rebus->update();
+	}
 	function __destruct(){
 
 	}
