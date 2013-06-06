@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2013 at 04:27 PM
+-- Generation Time: Jun 06, 2013 at 07:24 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -36,17 +36,7 @@ CREATE TABLE IF NOT EXISTS `rebus` (
   PRIMARY KEY (`rebus_id`),
   KEY `author` (`author`,`receiver`),
   KEY `receiver` (`receiver`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `rebus`
---
-
-INSERT INTO `rebus` (`rebus_id`, `sentence`, `rebus_date`, `is_found`, `author`, `receiver`) VALUES
-(2, '', '2013-05-15 16:28:29', 0, 14, 12),
-(3, '', '2013-05-22 14:47:53', 0, 2, 32),
-(4, 'bonjour monsieur', '2013-05-22 14:51:11', 0, 2, 32),
-(5, 'je suis une phrase à taper', '2013-05-22 17:40:12', 0, 2, 35);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -62,65 +52,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_status` int(11) NOT NULL DEFAULT '0',
   `user_passwd` varchar(40) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=65 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `user_mail`, `user_name`, `user_last_name`, `user_status`, `user_passwd`) VALUES
-(2, 'benoit@marc-anthony.fr', 'Marc-Anthony', 'BENOIT', 1, 'c187cd867a3ed87333f24f7d3514438e'),
-(10, 'user_0@gmail.com', 'name_0', 'Last_name_0', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(11, 'user_1@gmail.com', 'name_1', 'Last_name_1', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(12, 'user_2@gmail.com', 'name_2', 'Last_name_2', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(13, 'user_3@gmail.com', 'name_3', 'Last_name_3', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(14, 'user_4@gmail.com', 'name_4', 'Last_name_4', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(15, 'user_5@gmail.com', 'name_5', 'Last_name_5', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(16, 'user_6@gmail.com', 'name_6', 'Last_name_6', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(17, 'user_7@gmail.com', 'name_7', 'Last_name_7', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(18, 'user_8@gmail.com', 'name_8', 'Last_name_8', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(19, 'user_9@gmail.com', 'name_9', 'Last_name_9', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(20, 'user_10@gmail.com', 'name_10', 'Last_name_10', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(21, 'user_11@gmail.com', 'name_11', 'Last_name_11', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(22, 'user_12@gmail.com', 'name_12', 'Last_name_12', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(23, 'user_13@gmail.com', 'name_13', 'Last_name_13', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(24, 'user_14@gmail.com', 'name_14', 'Last_name_14', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(25, 'user_15@gmail.com', 'name_15', 'Last_name_15', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(26, 'user_16@gmail.com', 'name_16', 'Last_name_16', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(27, 'user_17@gmail.com', 'name_17', 'Last_name_17', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(28, 'user_18@gmail.com', 'name_18', 'Last_name_18', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(29, 'user_19@gmail.com', 'name_19', 'Last_name_19', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(30, 'user_20@gmail.com', 'name_20', 'Last_name_20', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(31, 'user_21@gmail.com', 'name_21', 'Last_name_21', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(32, 'user_22@gmail.com', 'name_22', 'Last_name_22', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(33, 'user_23@gmail.com', 'name_23', 'Last_name_23', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(34, 'user_24@gmail.com', 'name_24', 'Last_name_24', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(35, 'user_25@gmail.com', 'name_25', 'Last_name_25', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(36, 'user_26@gmail.com', 'name_26', 'Last_name_26', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(37, 'user_27@gmail.com', 'name_27', 'Last_name_27', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(38, 'user_28@gmail.com', 'name_28', 'Last_name_28', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(39, 'user_29@gmail.com', 'name_29', 'Last_name_29', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(40, 'user_30@gmail.com', 'name_30', 'Last_name_30', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(41, 'user_31@gmail.com', 'name_31', 'Last_name_31', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(42, 'user_32@gmail.com', 'name_32', 'Last_name_32', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(43, 'user_33@gmail.com', 'name_33', 'Last_name_33', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(44, 'user_34@gmail.com', 'name_34', 'Last_name_34', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(45, 'user_35@gmail.com', 'name_35', 'Last_name_35', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(46, 'user_36@gmail.com', 'name_36', 'Last_name_36', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(47, 'user_37@gmail.com', 'name_37', 'Last_name_37', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(48, 'user_38@gmail.com', 'name_38', 'Last_name_38', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(49, 'user_39@gmail.com', 'name_39', 'Last_name_39', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(50, 'user_40@gmail.com', 'name_40', 'Last_name_40', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(51, 'user_41@gmail.com', 'name_41', 'Last_name_41', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(52, 'user_42@gmail.com', 'name_42', 'Last_name_42', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(53, 'user_43@gmail.com', 'name_43', 'Last_name_43', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(54, 'user_44@gmail.com', 'name_44', 'Last_name_44', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(55, 'user_45@gmail.com', 'name_45', 'Last_name_45', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(56, 'user_46@gmail.com', 'name_46', 'Last_name_46', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(57, 'user_47@gmail.com', 'name_47', 'Last_name_47', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(58, 'user_48@gmail.com', 'name_48', 'Last_name_48', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(59, 'user_49@gmail.com', 'name_49', 'Last_name_49', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8'),
-(60, 'test@test.com', 'prénom', 'nom', 1, '334c4a4c42fdb79d7ebc3e73b517e6f8');
+(63, 'pierre@martin.fr', 'Pierre', 'Martin', 1, '84675f2baf7140037b8f5afe54eef841'),
+(64, 'alice@martin.fr', 'Alice', 'Martin', 1, '84675f2baf7140037b8f5afe54eef841');
 
 -- --------------------------------------------------------
 
@@ -136,20 +76,6 @@ CREATE TABLE IF NOT EXISTS `user_to_user` (
   KEY `user_id_2` (`user_id_2`),
   KEY `user_id_1` (`user_id_1`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user_to_user`
---
-
-INSERT INTO `user_to_user` (`user_id_1`, `user_id_2`, `status`) VALUES
-(2, 10, 1),
-(2, 11, 1),
-(2, 14, 1),
-(2, 22, 0),
-(2, 24, 1),
-(2, 37, 0),
-(17, 2, 1),
-(60, 43, 1);
 
 -- --------------------------------------------------------
 
