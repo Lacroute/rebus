@@ -45,9 +45,42 @@ class RebusController{
 		}
 	}
 
-	function addItems(){
-		$json = F3::get('POST');
-		var_dump($json);
+	function find(){
+		$idRebus = F3::get('PARAMS.id');
+		$rebus = new RebusModel();
+		$myRebus = $rebus->getRebusByIdAndReceiver($idRebus, F3::get('SESSION.user_id'));
+		$value = $rebus->getEmptyWords();
+		F3::set('empty', $value );
+		if(!$myRebus){
+			F3::reroute('/');
+		}else{
+			F3::set('idRebus', $idRebus);
+			F3::set('isFound', $myRebus->is_found);
+			F3::set('sentence', explode(" ",$myRebus->sentence));
+			F3::set('page', 'find');
+		}
+	}
+
+	function show(){
+		$idRebus = F3::get('PARAMS.id');
+		$rebus = new RebusModel();
+		$myRebus = $rebus->getRebusByIdAndAuthor($idRebus, F3::get('SESSION.user_id'));
+
+
+		if(!$myRebus){
+			F3::reroute('/');
+		}else{
+			F3::set('rebus', $myRebus);
+			F3::set('page', 'show');
+		}
+	}
+
+
+	function validate(){
+		$idRebus = F3::get('POST.idRebus');
+		$rebus = new RebusModel();
+		$rebus->validateRebus($idRebus);
+		exit();
 	}
 
 	function afterRoute(){
