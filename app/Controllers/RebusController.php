@@ -45,6 +45,11 @@ class RebusController{
 		}
 	}
 
+	function addItems(){
+		$json = F3::get('POST');
+		var_dump($json);
+	}
+
 	function afterRoute(){
 		echo Views::instance()->render('template.php');
 	}

@@ -32,7 +32,7 @@
 </nav>
 </header>
 		
-	<div id="queryResult">
+<div id="queryResult">
 <section class="resultSelection"><h1>trop</h1>
 	<section class="container">
 		<button class="actionRoulette monte">˄</button>
@@ -66,7 +66,13 @@
 			</div>
 		<button class="actionRoulette descend">˅</button>
 	</section>
-	</section>
+</section>
 </div>
+	<button id="kepezz">Kepezz</button>
 	</body>
+	<script type="text/javascript">
+		var baseUrl = "http://<?php echo F3::hive()['HEADERS']['Host'].F3::hive()['BASE']; ?>",
+			rebusId = "<?php echo F3::get('PARAMS.id'); ?>";
+		console.log(baseUrl);
+	</script>
 </html>

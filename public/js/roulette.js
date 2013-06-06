@@ -1,8 +1,9 @@
 $(document).ready(function(){
-	var hItem = $('.item:first-child').height()
-	var hToScroll = hItem+10+'px';
-	var resultByWord;
-	var selected;
+	var hItem = $('.item:first-child').height(),
+		hToScroll = hItem+10+'px',
+		resultByWord,
+		selected;
+	$('.resultByWord > :nth-child(2)').addClass('selected');
 
 	$('.monte').on('click', function(){
 		resultByWord = $(this).siblings('.resultByWord');
@@ -22,4 +23,24 @@ $(document).ready(function(){
 			selected.removeClass('selected');
 		}
 	});
+
+	$('#kepezz').on('click',function(){
+		var json = {};
+			json['items'] = [];
+		$('.selected').each(function(){
+			// console.log($(this));
+			json['items'].push($(this));
+		});
+		console.log(json);
+
+		$.ajax({
+			type: 'POST',
+			url: baseUrl+'/pool/'+rebusId+'/addItems',
+			data: {json: json},
+			success: function(){
+				console.log('SUCCES');
+			},
+		});
+
+	})
 });
