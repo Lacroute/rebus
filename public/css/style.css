@@ -25,10 +25,22 @@ img{max-height: 100%;}
 }*/
 .separator{	width: 100%;height: 2px;background-color: rgba(0, 133, 255, 0.7);}
 #kepezzForm{width: 70%;margin: 30px auto;}
-#sentenceForm{border: rgba(0, 133, 255, 0.7) solid 2px;background-color: rgba(27, 54, 83, 0.7);width: 80%;margin-right: 4%;color: #fff;padding: 3px 6px;}
+#sentenceForm, .inputStyle{border: rgba(0, 133, 255, 0.7) solid 2px;background-color: rgba(27, 54, 83, 0.7);width: 80%;margin-right: 4%;color: #fff;padding: 3px 6px;}
 
 /*** [END] INSPIRATION ***/
 
+
+/*** LOGIN ***/
+.form_login label{
+	width: 100px;
+	display: inline-block;
+}
+.form_login input[type='email'], .form_login input[type='password']{
+	width: 50%;
+	margin-bottom: 20px;
+}
+
+/*** [END] LOGIN ***/
 
 /*** HOME ***/
 #home_images{

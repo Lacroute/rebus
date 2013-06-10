@@ -55,7 +55,6 @@ class UserController{
 
 
 	function login(){
-		echo $this->verb;
 		$this->isConnected(true);
 
 		switch($this->verb){
