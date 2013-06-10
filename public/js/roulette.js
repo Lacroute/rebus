@@ -28,19 +28,19 @@ $(document).ready(function(){
 		var json = {};
 			json['items'] = [];
 		$('.selected').each(function(){
-			// console.log($(this));
-			json['items'].push($(this));
+			var outterHtml = $('<div>').append($(this).clone()).html();
+			json['items'].push(outterHtml);
 		});
 		console.log(json);
 
 		$.ajax({
 			type: 'POST',
-			url: baseUrl+'/pool/'+rebusId+'/addItems',
+			url: '/kep/pool/addItems',
 			data: {json: json},
 			success: function(){
 				console.log('SUCCES');
 			},
 		});
-		
+
 	})
 });

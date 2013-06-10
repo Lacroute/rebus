@@ -21,8 +21,7 @@ class SearchController{
 					// $result[$keyword]['vid']['vimeo'] = $vimeo->search($keyword);
 				}
 
-				F3::mset(array(	'page'			=> 'result_debug',
-								'results' 		=> $result));
+				F3::set('results', $result);
 				break;
 		}
 	}
