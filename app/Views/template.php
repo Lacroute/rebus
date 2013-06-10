@@ -8,9 +8,9 @@
 		<title>Intranet</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="public/css/reset.css">
-		<link rel="stylesheet" type="text/css" href="public/css/style.css">
-		<script type="text/javascript" src="public/js/jQuery.js"></script>
+		<link rel="stylesheet" type="text/css" href="/kep/public/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="/kep/public/css/style.css">
+		<script type="text/javascript" src="/kep/public/js/jQuery.js"></script>
 	</head>
 
 	<body>
