@@ -2,41 +2,36 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title> - Kép</title>
+		<title><?php echo $pageTitle ?> - Kép</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<base href="kep" />
+		<base href="<?php echo $BASE_URL; ?>" />
 		<title>Intranet</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="../../public/css/style.css">
-		<script src="../../public/js/jquery-1.8.3.min.js"></script>
-		<script src="../../public/js/roulette.js"></script>
+		<link rel="stylesheet" type="text/css" href="/kep/public/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="/kep/public/css/style.css">
+		<script type="text/javascript" src="/kep/public/js/jQuery.js"></script>
+		<script type="text/javascript" src="/kep/public/js/roulette.js"></script>
 	</head>
-
-	<body>
-		<header>
+<header id="menu">
 <nav>
-
+ 	<a id="home" href="/kep/home"><img src="/kep/public/images/logo.png" alt="Accueil"></a>
 	<ul>
-		<li><a href="home">Home</a></li>
-		<li><a href="tutorial">Tutorial</a></li>
-		<li><a href="pool/create">Kepezz</a></li>
-		<li><a href="user/listing">listing</a></li>
+		<li><a class="boutonAction" id="logout" href="/kep/user/logout">Déconnexion</a></li>
+		<li><a href="tutorial"><img src="/kep/public/images/info.png" alt="Tutorial"></a></li>
+		<li><a href="/kep/user/listing"><img src="/kep/public/images/compte.png" alt="Mon compte"></a></li>
+		<li><a href="/kep/pool/create"><img src="/kep/public/images/kepezz.png" alt="Kepezz"></a></li>
 
-			<li><a href="user/login">login</a></li>
-		<li><a href="user/signin">signin</a></li>
-
-		
 	</ul>
 
 </nav>
 </header>
+<div id="wrapper">
 		
 <div id="queryResult">
-<section class="resultSelection"><h1>trop</h1>
+<section class="resultSelection"><input class="inputRoulette boutonAction" type="text" value="Trop" readonly>
 	<section class="container">
-		<button class="actionRoulette monte">˄</button>
-		<div id="tmasque" class="masque"></div>
+		<button class="actionRoulette monte boutonAction">˄</button>
 		<div class="resultByWord">
 			<img class="item"src="//dribbble.s3.amazonaws.com/users/230290/screenshots/1090736/birds_teaser.png">
 			<img class="item selected"src="//dribbble.s3.amazonaws.com/users/33376/screenshots/1089916/tomato_teaser.png">
@@ -46,7 +41,6 @@
 			<img class="item"src="//dribbble.s3.amazonaws.com/users/110764/screenshots/1088517/drewrender_teaser.jpg">
 			<img class="item"src="//dribbble.s3.amazonaws.com/users/1935/screenshots/1088351/ns_dribbble_teaser.jpg">
 		</div>
-		<div id="bmasque" class="masque"></div>
 		<button class="actionRoulette descend">˅</button>
 		</section>
 	</section>
@@ -68,11 +62,14 @@
 	</section>
 </section>
 </div>
-	<button id="kepezz">Kepezz</button>
+<div id="saleFooter" class="separator"></div>
+<div id="wrapperFooter">
+	<button id="kepezzSelected"class="boutonAction" id="kepezz">Kepezz</button>
+</div>
 	</body>
 	<script type="text/javascript">
-		var baseUrl = "http://<?php echo F3::hive()['HEADERS']['Host'].F3::hive()['BASE']; ?>",
-			rebusId = "<?php echo F3::get('PARAMS.id'); ?>";
-		console.log(baseUrl);
+		// var baseUrl = "http://<?php echo F3::hive()['HEADERS']['Host'].F3::hive()['BASE']; ?>",
+		// 	rebusId = "<?php echo F3::get('PARAMS.id'); ?>";
+		// console.log(baseUrl);
 	</script>
 </html>

@@ -8,76 +8,44 @@ img{max-height: 100%;}
 #menu li + li{margin-right: 80px;}
 #home{position: absolute;left: 0;}
 #home img{margin: 15px 40px;height: 50px;width: auto;}
-#wrapper{width: 95%;margin: auto;position: relative}
-.boutonAction{background-color: rgba(0, 133, 255, 0.7); border: rgba(0, 133, 255, 0.7) solid 2px; color: #fff;padding: 3px 6px}
+
+#wrapper{width: 95%;margin: auto;}
+.boutonAction{background-color: rgba(0, 133, 255, 0.5); border: rgba(0, 133, 255, 0.7) solid 2px; color: #fff;padding: 3px 6px; cursor: pointer;}
+.boutonAction:hover{background-color: rgba(0, 133, 255, 0.7);}
+#menu .court{margin-right: 15px;}
+
+
 /*** [END] HEADER ***/
 
 /*** INSPIRATION ***/
-#inspiration{
-	margin: 60px 0;
-	background:url(../images/inspiration.png);
-	background-position: top left;
-	background-size: cover;
-	height: 300px;
-	width: 100%;	
-}
+#inspiration{margin-top: 60px; background:url(../images/inspiration.png);background-position: top left;background-size: cover;	height: 300px;width: 100%;}
 /*#inspiration .deroule{
 	background-position: top right;
 	-webkit-transition: background-position 2s ease; -moz-transition: background-position 2s ease; -ms-transition: background-position 2s ease; -o-transition: background-position 2s ease; transition: background-position 2s ease;
 }*/
-.separator{
-	width: 100%;
-	height: 2px;
-	background-color: rgba(0, 133, 255, 0.7);
-	margin-bottom: 30px;
-}
-#kepezzForm{
-	width: 70%;
-	margin: auto;
-}
-#sentenceForm{
-	border: rgba(0, 133, 255, 0.7) solid 2px;
-	background-color: rgba(27, 54, 83, 0.7);
-	width: 80%;
-	margin-right: 4%;
-	color: #fff;
-	padding: 3px 6px;
-}
-
+.separator{	width: 100%;height: 2px;background-color: rgba(0, 133, 255, 0.7);}
+#kepezzForm{width: 70%;margin: 30px auto;}
+#sentenceForm{border: rgba(0, 133, 255, 0.7) solid 2px;background-color: rgba(27, 54, 83, 0.7);width: 80%;margin-right: 4%;color: #fff;padding: 3px 6px;}
 
 /*** [END] INSPIRATION ***/
 
 
-/*** HOME ***/
-#home_images{
-	margin-top: 20px;
-	background: url(../images/home_images.png);
-	background-position: center center;
-	position: relative;
-	height: 901px;
-	width: 50%;
-	float: left;
-	max-width: 650px;
-	background-repeat: no-repeat;
+/*** ROULETTE ***/
+
+.inputRoulette{
+	margin: 10px auto;
 }
-
-#home_video{
-	margin-top: 20px;
-	position: fixed;
-	width: 50%;
-	margin-left :50%;
-}
-
-
-/*** [END] HOME ***/
-
-/*#queryResult:after{
+#queryResult:after{
 	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
-}*/
+}
+#queryResult{
+	overflow-x: auto;
+	overflow-y: hidden;
+}
 .resultSelection{
 	width: 250px;
 	float: left;
@@ -88,17 +56,16 @@ img{max-height: 100%;}
 }
 .container{
 	position: absolute;
-	height: 470px;
+	height: 430px;
 	width: 250px;
 	overflow: hidden;
 }
 .resultByWord{
 	position: relative;
 	top:0;
-	/*background-color: red;*/
 }
 .item{
-	height: 150px;
+	height: 130px;
 	transition: opacity 0.5s, height 0.5s;
 	display: block;
 	margin: auto;
@@ -106,7 +73,7 @@ img{max-height: 100%;}
 }
 .selected{
 	opacity: 1;
-	height: 170px;
+	height: 150px;
 	transition: opacity 0.5s, height 0.5s;
 }
 .item  + .item{
@@ -120,30 +87,14 @@ img{max-height: 100%;}
 .descend{
 	bottom: 0;
 }
-.masque{
-	width: 80%;
-	height: 100px;
-	position: absolute;
-	left: 10%;
+#saleFooter{
+	margin-top: 465px;
+}	
+#wrapperFooter{
+	width: 70%;
+	margin: 15px auto;
 }
-#tmasque{
-background: -moz-linear-gradient(top,  rgba(0,0,0,1) 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,0) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,1)), color-stop(15%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(0,0,0,1) 15%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(0,0,0,1) 15%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(0,0,0,1) 15%,rgba(0,0,0,0) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(0,0,0,1) 0%,rgba(0,0,0,1) 15%,rgba(0,0,0,0) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
-
+#kepezzSelected{
+	float: right;
 }
-#bmasque{
-	bottom: 0;
-background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 85%, rgba(0,0,0,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(85%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 85%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 85%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 85%,rgba(0,0,0,1) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 85%,rgba(0,0,0,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-
-}
+/*** [END] ROULETTE ***/

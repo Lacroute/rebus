@@ -9,7 +9,7 @@ class RebusController{
 		switch(F3::get('VERB')){
 			case 'GET':
 				F3::mset(array(	'page'		=> 'admin/ConnectorCreate',
-								'pageTitle'	=> 'Créer son Kép'));
+								'pageTitle'	=> 'Former une phrase'));
 				break;
 			case 'POST':
 				$check=array('sentence'=>'required','receiver'=>'required');
@@ -22,7 +22,7 @@ class RebusController{
 				$idReceiver = (F3::get('SESSION.user_id') == "64") ? "63" : "64";
 
 				$data = array(
-					"sentence" => F3::get('POST.sentence'),
+					"sentence" => F3::get('POST.sentenceForm'),
 					"receiver" => $idReceiver
 				);
 				$rebusId = RebusModel::instance()->addRebus($data);
@@ -41,7 +41,11 @@ class RebusController{
 				fwrite($jsonFile, json_encode($jsonData));
 				fclose($jsonFile);
 
-				// F3::reroute('/pool');
+				$sc = new SearchController();
+				$sc->search();
+
+				F3::mset(array(	'page'		=> 'admin/roulette',
+								'pageTitle'	=> 'Choisir ses médias'));
 				break;
 		}
 	}
