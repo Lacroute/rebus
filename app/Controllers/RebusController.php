@@ -48,6 +48,7 @@ class RebusController{
 								'pageTitle'	=> 'Choisir ses médias'));
 
 				F3::set('rebusId', $rebusId);
+				
 				break;
 		}
 	}
@@ -83,7 +84,7 @@ class RebusController{
 	}
 
 	function addItems(){
-		print_r('id = '.F3::get('idRebus'));
+		print_r('id = '.F3::get('rebusId'));
 		print_r(F3::get('POST.json'));
 	}
 
