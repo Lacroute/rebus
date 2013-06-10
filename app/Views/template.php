@@ -8,6 +8,7 @@
 		<title>Intranet</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Carme' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="/kep/public/css/reset.css">
 		<link rel="stylesheet" type="text/css" href="/kep/public/css/style.css">
 		<script type="text/javascript" src="/kep/public/js/jQuery.js"></script>

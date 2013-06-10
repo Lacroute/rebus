@@ -1,6 +1,7 @@
 
 /*** HEADER ***/
-body{background: url(../images/background.png);color: #fff;overflow:hidden;}
+body{background: url(../images/background.png);color: #fff;overflow:hidden;font-family: 'Carme', sans-serif;}
+input{font-family: 'Carme', sans-serif;}
 img{max-height: 100%;}
 #menu{height: 80px;	background: rgba(0, 0, 0, 0.5);}
 #menu ul{padding-top: 20px ;width: 100%;}
