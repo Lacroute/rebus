@@ -11,6 +11,8 @@
 		<link rel="stylesheet" type="text/css" href="/kep/public/css/reset.css">
 		<link rel="stylesheet" type="text/css" href="/kep/public/css/style.css">
 		<script type="text/javascript" src="/kep/public/js/jQuery.js"></script>
+		<script type="text/javascript" src="/kep/public/js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/kep/public/js/jquery.ui.touch-punch.min.js"></script>
 	</head>
 
 	<body>
