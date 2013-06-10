@@ -47,7 +47,7 @@ class RebusController{
 				F3::mset(array(	'page'		=> 'admin/roulette',
 								'pageTitle'	=> 'Choisir ses médias'));
 
-				F3::set('rebusId', $rebusId);
+				F3::set('SESSION.rebusId', $rebusId);
 				
 				break;
 		}
@@ -89,8 +89,14 @@ class RebusController{
 	}
 
 	function addItems(){
-		print_r('id = '.F3::get('rebusId'));
-		print_r(F3::get('POST.json'));
+		$rebusId = F3::get('SESSION.rebusId');
+		$json = F3::get('POST.json');
+		foreach ($json['items'] as $key=>$value) {
+			$json['items'][$key] =$value;
+		}
+		file_put_contents(F3::get('REBUS_FOLDER').'/'.$rebusId.'/data.json', json_encode($json));
+		echo $rebusId;
+		die();
 	}
 
 	function validate(){

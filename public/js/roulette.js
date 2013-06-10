@@ -31,14 +31,16 @@ $(document).ready(function(){
 			var outterHtml = $('<div>').append($(this).clone()).html();
 			json['items'].push(outterHtml);
 		});
-		console.log(json);
 
 		$.ajax({
 			type: 'POST',
 			url: '/kep/pool/addItems',
 			data: {json: json},
-			success: function(){
+			success: function(data){
 				console.log('SUCCES');
+				console.log(data);
+				var phrase = 'Fichier json enregistré avec succès. '+ json['items'].length + ' médias sauvegardés.\n '+data+' rébus créés.'
+				alert(phrase);
 			},
 		});
 

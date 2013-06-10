@@ -21,6 +21,6 @@ foreach ($globalResults as $keyword => $wordResult) {
 echo '</div>'?>
 <div id="saleFooter" class="separator"></div>
 <div id="wrapperFooter">
-	<button id="kepezzSelected"class="boutonAction" id="kepezzSelected">Kepezz</button>
+	<button id="kepezzSelected"class="boutonAction" id="kepezzSelected">Valider</button>
 </div>
 <script type="text/javascript" src="/kep/public/js/roulette.js"></script>
