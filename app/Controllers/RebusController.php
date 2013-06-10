@@ -8,11 +8,11 @@ class RebusController{
 	function create(){
 		switch(F3::get('VERB')){
 			case 'GET':
-				echo Views::instance()->render('admin/ConnectorCreate.php');
+				F3::mset(array(	'page'		=> 'admin/ConnectorCreate',
+								'pageTitle'	=> 'Créer son Kép'));
 				break;
 			case 'POST':
 				$check=array('sentence'=>'required','receiver'=>'required');
-				// F3::set('POST', Datas::instance()->secure(F3::get('POST')));
 				$error=Datas::instance()->check(F3::get('POST'),$check);
 				if($error){
 					F3::set('errorMsg',$error);
