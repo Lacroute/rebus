@@ -53,6 +53,11 @@ class RebusController{
 		}
 	}
 
+	function mashup(){
+		F3::set('rebusId', F3::get('PARAMS.id'));
+		F3::set('page', 'mashup');
+	}
+
 	function find(){
 		$idRebus = F3::get('PARAMS.id');
 		$rebus = new RebusModel();
