@@ -1,6 +1,6 @@
 
 /*** HEADER ***/
-body{background: url(../images/background.png);color: #fff;}
+body{background: url(../images/background.png);color: #fff;overflow:hidden;}
 img{max-height: 100%;}
 #menu{height: 80px;	background: rgba(0, 0, 0, 0.5);}
 #menu ul{padding-top: 20px ;width: 100%;}
@@ -8,7 +8,7 @@ img{max-height: 100%;}
 #menu li + li{margin-right: 80px;}
 #home{position: absolute;left: 0;}
 #home img{margin: 15px 40px;height: 50px;width: auto;}
-#wrapper{width: 95%;margin: auto;}
+#wrapper{width: 95%;margin: auto;position: relative}
 .boutonAction{background-color: rgba(0, 133, 255, 0.7); border: rgba(0, 133, 255, 0.7) solid 2px; color: #fff;padding: 3px 6px}
 /*** [END] HEADER ***/
 
@@ -46,6 +46,30 @@ img{max-height: 100%;}
 
 
 /*** [END] INSPIRATION ***/
+
+
+/*** HOME ***/
+#home_images{
+	margin-top: 20px;
+	background: url(../images/home_images.png);
+	background-position: center center;
+	position: relative;
+	height: 901px;
+	width: 50%;
+	float: left;
+	max-width: 650px;
+	background-repeat: no-repeat;
+}
+
+#home_video{
+	margin-top: 20px;
+	position: fixed;
+	width: 50%;
+	margin-left :50%;
+}
+
+
+/*** [END] HOME ***/
 
 /*#queryResult:after{
 	content: ".";

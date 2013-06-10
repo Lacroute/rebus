@@ -19,7 +19,7 @@ if($isFound == 1){
 			}
 		}		
 		if(!$temp){
-			echo '<input type="text" class="check"  data-value="'.$word.'"/> ';
+			echo '<input type="text" class="inputRoulette boutonAction check"  data-value="'.$word.'"/> ';
 		}else{
 			echo '<span>'.$word.' </span>';
 		}
@@ -65,9 +65,9 @@ if($isFound == 1){
 			  type: 'POST',
 			   data: { idRebus: "<?php echo $idRebus; ?>" }
 			}).done(function(data) {
-			console.log(data);
+			//console.log(data);
 			});
-			console.log('rébus trouvé, TODO : requête en ajax pour valider la chose');
+			//console.log('rébus trouvé, TODO : requête en ajax pour valider la chose');
 			$('#valid').remove();
 		}
 	}
