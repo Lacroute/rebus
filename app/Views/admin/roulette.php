@@ -1,33 +1,26 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title><?php echo $pageTitle ?> - Kép</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<base href="<?php echo $BASE_URL; ?>" />
-		<title>Intranet</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="/kep/public/css/reset.css">
-		<link rel="stylesheet" type="text/css" href="/kep/public/css/style.css">
-		<script type="text/javascript" src="/kep/public/js/jQuery.js"></script>
-		<script type="text/javascript" src="/kep/public/js/roulette.js"></script>
-	</head>
-<header id="menu">
-<nav>
- 	<a id="home" href="/kep/home"><img src="/kep/public/images/logo.png" alt="Accueil"></a>
-	<ul>
-		<li><a class="boutonAction" id="logout" href="/kep/user/logout">Déconnexion</a></li>
-		<li><a href="tutorial"><img src="/kep/public/images/info.png" alt="Tutorial"></a></li>
-		<li><a href="/kep/user/listing"><img src="/kep/public/images/compte.png" alt="Mon compte"></a></li>
-		<li><a href="/kep/pool/create"><img src="/kep/public/images/kepezz.png" alt="Kepezz"></a></li>
+<div id="queryResult">
+<?php
+$globalResults = F3::get('results');
+echo($globalResults);
 
-	</ul>
+foreach ($globalResults as $keyword => $wordResult) {
+	echo ('<section class="resultSelection"><h1>'.$keyword.'</h1><section class="container"><button class="actionRoulette monte">˄</button><div class="resultByWord">');
+	foreach ($wordResult['img'] as $imgJsonResult) {
+		$imgJsonResult = json_decode($imgJsonResult);
+		foreach ($imgJsonResult->results as $object) {
+			echo('<img class="item" src="'.$object->thumbnail.'">');
+		};
+	};
+	foreach ($wordResult['vid'] as $vidJsonResult) {
+		$vidJsonResult = json_decode($vidJsonResult);
+		foreach ($vidJsonResult as $object) {
+			echo('<iframe class="item" src="http://player.vimeo.com/video/'.$object->id.'?byline=0&badge=0&color=d01e2f&title=0&portrait=0&" width="250" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+		};
+	}
+	echo ('</div><button class="actionRoulette descend">˅</button></section></section>');
+}; ?>
 
-</nav>
-</header>
-<div id="wrapper">
-		
+<!--
 <div id="queryResult">
 <section class="resultSelection"><input class="inputRoulette boutonAction" type="text" value="Trop" readonly>
 	<section class="container">
@@ -62,14 +55,9 @@
 	</section>
 </section>
 </div>
+-->
 <div id="saleFooter" class="separator"></div>
 <div id="wrapperFooter">
 	<button id="kepezzSelected"class="boutonAction" id="kepezz">Kepezz</button>
 </div>
-	</body>
-	<script type="text/javascript">
-		// var baseUrl = "http://<?php echo F3::hive()['HEADERS']['Host'].F3::hive()['BASE']; ?>",
-		// 	rebusId = "<?php echo F3::get('PARAMS.id'); ?>";
-		// console.log(baseUrl);
-	</script>
-</html>
+<script type="text/javascript" src="/kep/public/js/roulette.js"></script>

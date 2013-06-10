@@ -21,5 +21,3 @@ foreach ($globalResults as $keyword => $wordResult) {
 // echo "</div><p><h1>Flux brut récupéré</h1></p>";
 // var_dump($globalResults);
 ?>
-<script src="public/js/jquery-1.8.3.min.js"></script>
-<script src="public/js/roulette.js"></script>

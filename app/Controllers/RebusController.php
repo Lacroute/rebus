@@ -9,7 +9,7 @@ class RebusController{
 		switch(F3::get('VERB')){
 			case 'GET':
 				F3::mset(array(	'page'		=> 'admin/ConnectorCreate',
-								'pageTitle'	=> 'Créer son Kép'));
+								'pageTitle'	=> 'Former une phrase'));
 				break;
 			case 'POST':
 				$check=array('sentence'=>'required','receiver'=>'required');
@@ -41,7 +41,8 @@ class RebusController{
 				fwrite($jsonFile, json_encode($jsonData));
 				fclose($jsonFile);
 
-				// F3::reroute('/pool');
+				F3::mset(array(	'page'		=> 'admin/roulette',
+								'pageTitle'	=> 'Choisir ses médias'));
 				break;
 		}
 	}
