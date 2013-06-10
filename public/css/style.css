@@ -30,6 +30,29 @@ img{max-height: 100%;}
 /*** [END] INSPIRATION ***/
 
 
+/*** HOME ***/
+#home_images{
+	margin-top: 20px;
+	background: url(../images/home_images.png);
+	background-position: center center;
+	position: relative;
+	height: 901px;
+	width: 50%;
+	float: left;
+	max-width: 650px;
+	background-repeat: no-repeat;
+}
+
+#home_video{
+	margin-top: 20px;
+	position: fixed;
+	width: 50%;
+	margin-left :50%;
+}
+
+
+/*** [END] HOME ***/
+
 /*** ROULETTE ***/
 
 .inputRoulette{
