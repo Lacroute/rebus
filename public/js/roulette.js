@@ -32,7 +32,7 @@ $(document).ready(function(){
 			json['items'].push($(this));
 		});
 		console.log(json);
-		/*
+
 		$.ajax({
 			type: 'POST',
 			url: baseUrl+'/pool/'+rebusId+'/addItems',
@@ -41,6 +41,6 @@ $(document).ready(function(){
 				console.log('SUCCES');
 			},
 		});
-	*/
+		
 	})
 });
