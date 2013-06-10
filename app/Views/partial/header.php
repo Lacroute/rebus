@@ -1,11 +1,10 @@
-<header>
+<header id="menu">
 <nav>
-
+ 	<a id="home" href="home"><img src="public/images/logo.png" alt="Accueil"></a>
 	<ul>
-		<li><a href="home">Home</a></li>
-		<li><a href="tutorial">Tutorial</a></li>
-		<li><a href="pool/create">Kepezz</a></li>
-		<li><a href="user/listing">listing</a></li>
+		<li><a href="tutorial"><img src="public/images/info.png" alt="Tutorial"></a></li>
+		<li><a href="user/listing"><img src="public/images/compte.png" alt="Mon compte"></a></li>
+		<li><a href="pool/create"><img src="public/images/kepezz.png" alt="Kepezz"></a></li>
 
 	<?php if(!$SESSION['user_id']):?>
 		<li><a href="user/login">login</a></li>
