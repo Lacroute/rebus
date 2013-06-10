@@ -19,10 +19,12 @@ class RebusController{
 					F3::reroute('/pool');
 					return;
 				}
+				$idReceiver = (F3::get('SESSION.user_id') == "64") ? "63" : "64";
+				if( )
 
 				$data = array(
 					"sentence" => F3::get('POST.sentence'),
-					"receiver" => F3::get('POST.receiver')
+					"receiver" => $idReceiver
 				);
 				$rebusId = RebusModel::instance()->addRebus($data);
 
