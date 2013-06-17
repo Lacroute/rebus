@@ -22,7 +22,7 @@ class RebusController{
 				$idReceiver = (F3::get('SESSION.user_id') == "64") ? "63" : "64";
 
 				$data = array(
-					"sentence" => F3::get('POST.sentenceForm'),
+					"sentence" => F3::get('POST.sentence'),
 					"receiver" => $idReceiver
 				);
 				$rebusId = RebusModel::instance()->addRebus($data);
@@ -78,12 +78,13 @@ class RebusController{
 		$idRebus = F3::get('PARAMS.id');
 		$rebus = new RebusModel();
 		$myRebus = $rebus->getRebusByIdAndAuthor($idRebus, F3::get('SESSION.user_id'));
-
+		$str_data = file_get_contents(F3::get('REBUS_FOLDER').$idRebus.'/data.json');
+		$data = json_decode($str_data,true);
 
 		if(!$myRebus){
 			F3::reroute('/');
 		}else{
-			F3::set('rebus', $myRebus);
+			F3::set('rebus', $data);
 			F3::set('page', 'show');
 		}
 	}
@@ -91,10 +92,14 @@ class RebusController{
 	function addItems(){
 		$rebusId = F3::get('SESSION.rebusId');
 		$json = F3::get('POST.json');
+		$str_data = file_get_contents(F3::get('REBUS_FOLDER').$rebusId.'/data.json');
+		$data = json_decode($str_data,true);
+
 		foreach ($json['items'] as $key=>$value) {
-			$json['items'][$key] =$value;
+			$data['items'][$key] =$value;
 		}
-		file_put_contents(F3::get('REBUS_FOLDER').'/'.$rebusId.'/data.json', json_encode($json));
+
+		file_put_contents(F3::get('REBUS_FOLDER').$rebusId.'/data.json', json_encode($data));
 		echo $rebusId;
 		die();
 	}

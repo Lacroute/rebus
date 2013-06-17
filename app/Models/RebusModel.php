@@ -13,7 +13,7 @@ class RebusModel extends Prefab{
 	function addRebus($data){
 
 		$this->rebus->sentence = $data['sentence'];
-		$this->rebus->author = F3::get('SESSION.user_id');
+		$this->rebus->author = 63;
 		$this->rebus->receiver = $data['receiver'];
 		$this->rebus->save();
 

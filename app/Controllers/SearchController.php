@@ -18,7 +18,7 @@ class SearchController{
 				foreach ($sentence as $index => $keyword) {
 					$result[$keyword]['img']['dribbble'] = $dribble->search($keyword);
 					$result[$keyword]['img']['pinterest'] = $pinterest->search($keyword);
-					$result[$keyword]['vid']['vimeo'] = $vimeo->search($keyword);
+					// $result[$keyword]['vid']['vimeo'] = $vimeo->search($keyword);
 				}
 
 				F3::set('results', $result);

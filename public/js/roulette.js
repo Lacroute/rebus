@@ -38,9 +38,10 @@ $(document).ready(function(){
 			data: {json: json},
 			success: function(data){
 				console.log('SUCCES');
-				console.log(data);
-				var phrase = 'Fichier json enregistré avec succès. '+ json['items'].length + ' médias sauvegardés.\n '+data+' rébus créés.'
-				alert(phrase);
+				var show = data.toString()+'/show';
+				var url = document.URL;
+				url = url.replace('create', show);
+				window.location = url;
 			},
 		});
 
